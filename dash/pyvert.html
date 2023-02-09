@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+
+<script>
+const cap = [  "Ottawa",  "Edmonton",  "Victoria",  "Winnipeg",  "Fredericton",  "St. Johns",  "Halifax",  "Toronto",  "Charlottetown",  "Quebec City",  "Regina",  "Whitehorse",  "Iqaluit",  "Yellowknife",];
+const states = [  "Canada",  "Alberta",  "British Columbia",  "Manitoba",  "New Brunswick",  "Newfoundland and Labrador",  "Nova Scotia",  "Ontario",  "Prince Edward Island",  "Quebec",  "Saskatchewan",  "Yukon",  "Nunavut",  "Northwest Territories",];
+
+let short_list = [" ", " ", " ", " ", " "];
+
+let score = 0;
+let count = 0;
+
+const new_list = [...cap];
+
+function showChoice() {
+  let x = document.querySelector('input[name="cap"]:checked').value;
+  if (x === cap[count]) {
+    score++;
+  }
+  count++;
+  window.location.reload();
+}
+
+while (count < 14) {
+  short_list = short_list.map(() => "");
+  new_list.sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < 5; i++) {
+    short_list[i] = new_list[i];
+  }
+  for (let i = 0; i < 5; i++) {
+    if (short_list[i] === cap[count]) {
+      short_list[i] = new_list[5];
+    }
+  }
+  let r = Math.floor(Math.random() * 5);
+
+  short_list[r] = cap[count];
+
+  let root = document.createElement("div");
+  root.innerHTML = `
+    <p>The Capital of ${states[count]} is?</p>
+    ${short_list
+      .map(
+        (item, index) =>
+          `<input type="radio" id="cap${index}" name="cap" value="${item}">
+          <label for="cap${index}">${item}</label><br>`
+      )
+      .join("")}
+    <button onclick="showChoice()">Show Choice</button>
+    <p>Score: ${score}</p>
+    <p>You have: ${score} of ${count} correct.</p>
+  `;
+  document.body.appendChild(root);
+}
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Quiz</title>
+    <script>
+      let score = 0;
+      function checkAnswer(question, answer) {
+        if (question === answer) {
+          score++;
+          alert("Correct!");
+        } else {
+          alert("Wrong.");
+        }
+      }
+      function resetScore() {
+        score = 0;
+        alert("Score has been reset.");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>HTML Quiz</h1>
+    <p>What does HTML stand for?</p>
+    <button onclick="checkAnswer('Hypertext Markup Language', 'Hypertext Markup Language')">Hypertext Markup Language</button>
+    <button onclick="checkAnswer('Hypertext Markup Language', 'High-level Machine Programming Language')">High-level Machine Programming Language</button>
+    <p>Your score: <span id="score">0</span></p>
+    <button onclick="resetScore()">Reset</button>
+    <script>
+      document.getElementById("score").innerHTML = score;
+    </script>
+  </body>
+</html>

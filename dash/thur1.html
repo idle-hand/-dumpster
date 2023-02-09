@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script>
+      var score = 0;
+  
+      var questions = [
+        {
+          question: "What does the Canadian flag look like?",
+          options: [
+            "Red and white with provincial emblems.",
+            "Red and white with a beaver.",
+            "White with a red border on each end and a red maple leaf in the centre.",
+            "Red with a white maple leaf."
+          ],
+          correctAnswer: 2
+        },
+        {
+          question: "What does the term “responsible government” mean?",
+          options: [
+            "Each person in each electoral district is responsible for voting.",
+            "The Governor General is responsible for the actions of the Prime Minister.",
+            "The ministers of the Crown must have the support of a majority of the elected representatives in order to govern.",
+            "All Canadians are responsible for each other."
+          ],
+          correctAnswer: 2
+        },
+        {
+          question: "What does the word “Inuit” mean?",
+          options: [
+            "\"Eskimo\" in Inuktitut language.",
+            "\"Home\" in English.",
+            "\"The people\" in the Inuktitut language.",
+            "\"The Arctic Land\" in Inuktitut language."
+          ],
+          correctAnswer: 2
+        },
+        // ...
+      ];
+  
+      function startQuiz() {
+        for (var i = 0; i < questions.length; i++) {
+          var question = questions[i];
+          var userAnswer = parseInt(
+            prompt(question.question + "\n" + question.options.join("\n"))
+          );
+  
+          if (userAnswer === question.correctAnswer) {
+            alert("Correct!");
+            score++;
+          } else {
+            alert("Incorrect.");
+          }
+        }
+  
+        alert("Your score: " + score + " / " + questions.length);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="startQuiz()">Start Quiz</button>
+  </body>
+</html>

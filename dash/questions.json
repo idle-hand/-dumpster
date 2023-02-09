@@ -1,0 +1,29 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "answers": [
+      {"text": "Paris", "correct": true},
+      {"text": "London", "correct": false},
+      {"text": "Berlin", "correct": false},
+      {"text": "Madrid", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the currency of Japan?",
+    "answers": [
+      {"text": "Yen", "correct": true},
+      {"text": "Dollar", "correct": false},
+      {"text": "Euro", "correct": false},
+      {"text": "Pound", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the tallest mountain in the world?",
+    "answers": [
+      {"text": "Mount Everest", "correct": true},
+      {"text": "K2", "correct": false},
+      {"text": "Kangchenjunga", "correct": false},
+      {"text": "Lhotse", "correct": false}
+    ]
+  }
+]

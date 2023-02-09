@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Quiz</title>
+</head>
+<body>
+  <div id="quiz"></div>
+  <button id="submit">Submit Quiz</button>
+  <button id="reset">Reset Quiz</button>
+  <div id="results"></div>
+
+  <script>
+    const quizContainer = document.getElementById("quiz");
+    const resultsContainer = document.getElementById("results");
+    const submitButton = document.getElementById("submit");
+    const resetButton = document.getElementById("reset");
+
+    const questions = [
+      {
+        "question": "What is the capital of France?",
+        "answers": [
+          {"text": "Paris", "correct": true},
+          {"text": "London", "correct": false},
+          {"text": "Berlin", "correct": false},
+          {"text": "Madrid", "correct": false}
+        ]
+      },
+      {
+        "question": "What is the currency of Japan?",
+        "answers": [
+          {"text": "Yen", "correct": true},
+          {"text": "Dollar", "correct": false},
+          {"text": "Euro", "correct": false},
+          {"text": "Pound", "correct": false}
+        ]
+      },
+      {
+        "question": "What is the tallest mountain in the world?",
+        "answers": [
+          {"text": "Mount Everest", "correct": true},
+          {"text": "K2", "correct": false},
+          {"text": "Kangchenjunga", "correct": false},
+          {"text": "Lhotse", "correct": false}
+        ]
+      }
+    ];
+
+    function showQuestions(questions, quizContainer){
+      // code to show questions goes here
+    }
+
+    function showResults(questions, quizContainer, resultsContainer){
+      // code to show results goes here
+    }
+
+    resetButton.addEventListener("click", function(){
+      // code to reset quiz goes here
+    });
+
+    submitButton.addEventListener("click", function(){
+      showResults(questions, quizContainer, resultsContainer);
+    });
+
+    showQuestions(questions, quizContainer);
+  </script>
+</body>
+</html>

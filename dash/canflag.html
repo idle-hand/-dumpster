@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Quiz</title>
+    <style>
+      body {
+        background-color: #0B3D91;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      .question {
+        margin-bottom: 50px;
+      }
+      button {
+        background-color: #F0FFFF;
+        color: #0B3D91;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+      #score {
+        font-weight: bold;
+      }
+      @media (max-width: 500px) {
+        button {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+    <script>
+      let score = 0;
+      let currentQuestion = 0;
+      const questions = [
+        {
+          text: "What does HTML stand for?",
+          options: [
+            "Hypertext Markup Language",
+            "High-level Machine Programming Language"
+          ],
+          answer: 0
+        },
+        {
+          text: "What is the main purpose of HTML?",
+          options: [
+            "To structure and display content on the web",
+            "To create desktop applications"
+          ],
+          answer: 0
+        }
+      ];
+      function checkAnswer(answer) {
+        if (questions[currentQuestion].answer === answer) {
+          score++;
+          alert("Correct!");
+        } else {
+          alert("Wrong.");
+        }
+        document.getElementById("score").innerHTML = score;
+      }
+      function displayQuestion() {
+        document.getElementById("question").innerHTML = questions[currentQuestion].text;
+        const options = questions[currentQuestion].options;
+        for (let i = 0; i < options.length; i++) {
+          const button = document.getElementById(`option${i}`);
+          button.innerHTML = options[i];
+          button.style.display = "inline-block";
+        }
+      }
+      function nextQuestion() {
+        currentQuestion++;
+        if (currentQuestion === questions.length) {
+          alert(`Quiz completed. Your score is ${score}`);
+          currentQuestion = 0;
+        }
+        displayQuestion();
+      }
+      function resetScore() {
+        score = 0;
+        currentQuestion = 0;
+        document.getElementById("score").innerHTML = score;
+        alert("Score has been reset.");
+        displayQuestion();
+      }
+    </script>
+  </head>
+  <body onload="displayQuestion()">
+    <h1>HTML Quiz</h1>
+    <p class="question" id="question"></p>
+    <button id="option0" onclick="checkAnswer(0)" style

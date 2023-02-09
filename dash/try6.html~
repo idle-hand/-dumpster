@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Capital Quiz</title>
+  </head>
+  <body>
+    <div id="quizContainer"></div>
+    <button id="nextQuestion">Next</button>
+    <div id="score"></div>
+    <script>
+      const provinces = [
+        { name: "Alberta", capital: "Edmonton" },
+        { name: "British Columbia", capital: "Victoria" },
+        { name: "Manitoba", capital: "Winnipeg" },
+        { name: "New Brunswick", capital: "Fredericton" },
+        { name: "Newfoundland and Labrador", capital: "St. John's" },
+        { name: "Nova Scotia", capital: "Halifax" },
+        { name: "Nunavut", capital: "Iqaluit" },
+        { name: "Ontario", capital: "Toronto" },
+        { name: "Prince Edward Island", capital: "Charlottetown" },
+        { name: "Quebec", capital: "Quebec City" },
+        { name: "Saskatchewan", capital: "Regina" },
+        { name: "Northwest Territories", capital: "Yellowknife" },
+        { name: "Yukon", capital: "Whitehorse" }
+      ];
+
+      let score = 0;
+      let currentQuestion = 0;
+      const scoreDisplay = document.getElementById("score");
+      scoreDisplay.innerHTML = `Score: ${score} / ${provinces.length}`;
+
+      const quizContainer = document.getElementById("quizContainer");
+      const nextQuestionBtn = document.getElementById("nextQuestion");
+
+      function displayQuestion() {
+        const province = provinces[currentQuestion];
+        let questionHTML = `
+          <div>
+            <p>What is the capital of ${province.name}?</p>
+          `;
+
+        let capital = province.capital;
+        let otherCapitals = provinces
+          .filter(prov => prov.capital !== capital)
+          .map(prov => prov.capital)
+          .slice(0, 3);
+        let options = [capital, ...otherCapitals];
+
+        options.forEach((value, j) => {
+          questionHTML += `
+            <input type="checkbox" id="question-${currentQuestion}-${j}" value="${value}">
+            <label for="question-${currentQuestion}-${j}">${value}</label><br>
+          `;
+        });
+
+        questionHTML += "</div>";
+        quizContainer.innerHTML = questionHTML;
+
+        nextQuestionBtn.addEventListener("click", () => {
+          let inputs = document.querySelectorAll(
+            `#quizContainer input[type='checkbox']`
+          );
+          for (let i = 0; i < inputs.length; i++) {
+            if (inputs[i].

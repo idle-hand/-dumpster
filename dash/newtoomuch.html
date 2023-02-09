@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Capital Quiz</title>
+  </head>
+  <body>
+    <div id="score"></div>
+    <script>
+      const provinces = [
+        { name: "Alberta", capital: "Edmonton" },
+        { name: "British Columbia", capital: "Victoria" },
+        { name: "Manitoba", capital: "Winnipeg" },
+        { name: "New Brunswick", capital: "Fredericton" },
+        { name: "Newfoundland and Labrador", capital: "St. John's" },
+        { name: "Nova Scotia", capital: "Halifax" },
+        { name: "Nunavut", capital: "Iqaluit" },
+        { name: "Ontario", capital: "Toronto" },
+        { name: "Prince Edward Island", capital: "Charlottetown" },
+        { name: "Quebec", capital: "Quebec City" },
+        { name: "Saskatchewan", capital: "Regina" },
+        { name: "Northwest Territories", capital: "Yellowknife" },
+        { name: "Yukon", capital: "Whitehorse" }
+      ];
+
+      let score = 0;
+      const scoreDisplay = document.getElementById("score");
+      scoreDisplay.innerHTML = `Score: ${score} / ${provinces.length}`;
+
+      let currentQuestion = 0;
+
+      function showQuestion() {
+        if (currentQuestion >= provinces.length) {
+          return;
+        }
+
+        let container = document.createElement("div");
+        let label = document.createElement("label");
+        label.innerHTML = `What is the capital of ${provinces[currentQuestion].name}?`;
+        label.setAttribute("for", "question" + currentQuestion);
+        container.appendChild(label);
+        container.appendChild(document.createElement("br"));
+
+        let capital = provinces[currentQuestion].capital;
+        let otherCapitals = provinces
+          .filter(province => province.capital !== capital)
+          .map(province => province.capital)
+          .slice(0, 3);
+        let options = [capital, ...otherCapitals];
+
+        let answer = prompt(label.innerHTML + "\n" + options.join("\n"));
+        if (answer === capital) {
+          score++;
+          scoreDisplay.innerHTML = `Score: ${score} / ${provinces.length}`;
+        }
+
+        currentQuestion++;
+        showQuestion();
+      }
+
+      showQuestion();
+    </script>
+  </body>
+</html>

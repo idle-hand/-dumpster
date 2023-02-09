@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<script>
+const cap = ['Ottawa', 'Edmonton', 'Victoria', 'Winnipeg', 'Fredericton', 'St. Johns', 'Halifax', 'Toronto', 'Charlottetown', 'Quebec City', 'Regina', 'Whitehorse', 'Iqaluit', 'Yellowknife'];
+const states = ['Canada', 'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Yukon', 'Nunavut', 'Northwest Territories'];
+let shortList = [' ', ' ', ' ', ' ', ' '];
+let score = 0;
+let count = 0;
+let newList = [...cap];
+
+const showChoice = (e) => {
+    const x = e.target.innerHTML;
+    if (x === cap[count]) {
+        score += 1;
+    }
+    count += 1;
+    if (count < 14) {
+        displayQuestion();
+    } else {
+        alert(`Your score is ${score} of 14`);
+    }
+};
+
+const resetQuiz = () => {
+    shortList = [' ', ' ', ' ', ' ', ' '];
+    score = 0;
+    count = 0;
+    newList = [...cap];
+    displayQuestion();
+};
+
+const displayQuestion = () => {
+    const shuffledList = [...newList];
+    shortList = shuffledList.sort(() => 0.5 - Math.random()).slice(0, 5);
+    const correctAnswerIndex = shortList.findIndex((answer) => answer === cap[count]);
+    shortList[correctAnswerIndex] = shuffledList[5];
+    const randomIndex = Math.floor(Math.random() * 5);
+    shortList[randomIndex] = cap[count];
+    const questionContainer = document.getElementById("questionContainer");
+    questionContainer.innerHTML = "";
+    const question = document.createElement("p");
+    question.innerHTML = `The Capital of ${states[count]} is?`;
+    question.style.fontSize = "32px";
+    questionContainer.appendChild(question);
+    shortList.forEach((answer) => {
+        const answerButton = document.createElement("button");
+        answerButton.innerHTML = answer;
+        answerButton.style.fontSize = "22px";
+        answerButton.style.margin = "5px";
+        answerButton.addEventListener("click", showChoice);
+        questionContainer.appendChild(answerButton);
+    });
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerHTML = `Score: ${score}`;
+};
+
+displayQuestion();
+
+const resetButton = document.createElement("button");
+resetButton.innerHTML = "Reset Quiz";
+resetButton.style.margin = "10px";
+resetButton.addEventListener("click", resetQuiz);
+document.body.appendChild(resetButton);
+</scruot>
+</body>
+</html>

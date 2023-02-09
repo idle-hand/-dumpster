@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 1em;
+  background-color: aliceblue;
+}
+
+#score {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: blue;
+}
+
+div {
+  margin-bottom: 1em;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px gray;
+}
+
+label {
+  font-size: 1.2em;
+  display: block;
+  color: blue;
+}
+
+input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0.5em;
+  }
+
+  label {
+    font-size: 1em;
+  }
+
+  div {
+    padding: 0.5em;
+  }
+}
+
+input[type="radio"] {
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+input[type="radio"]:checked {
+  background-color: lightblue;
+}

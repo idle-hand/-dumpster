@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Capital Quiz</title>
+  </head>
+  <body>
+    <div id="score"></div>
+    <div id="quizContainer"></div>
+    <button id="nextQuestion">Next</button>
+    <script>
+      const provinces = [
+        { name: "Alberta", capital: "Edmonton" },
+        { name: "British Columbia", capital: "Victoria" },
+        { name: "Manitoba", capital: "Winnipeg" },
+        { name: "New Brunswick", capital: "Fredericton" },
+        { name: "Newfoundland and Labrador", capital: "St. John's" },
+        { name: "Nova Scotia", capital: "Halifax" },
+        { name: "Nunavut", capital: "Iqaluit" },
+        { name: "Ontario", capital: "Toronto" },
+        { name: "Prince Edward Island", capital: "Charlottetown" },
+        { name: "Quebec", capital: "Quebec City" },
+        { name: "Saskatchewan", capital: "Regina" },
+        { name: "Northwest Territories", capital: "Yellowknife" },
+        { name: "Yukon", capital: "Whitehorse" }
+      ];
+
+      let score = 0;
+      const scoreDisplay = document.getElementById("score");
+      scoreDisplay.innerHTML = `Score: ${score} / ${provinces.length}`;
+
+      const quizContainer = document.getElementById("quizContainer");
+      const nextQuestionBtn = document.getElementById("nextQuestion");
+
+      let questionIndex = 0;
+      displayQuestion();
+
+      function displayQuestion() {
+        quizContainer.innerHTML = "";
+        let container = document.createElement("div");
+        let label = document.createElement("label");
+        label.innerHTML = `What is the capital of ${provinces[questionIndex].name}?`;
+        label.setAttribute("for", "question" + questionIndex);
+        container.appendChild(label);
+        container.appendChild(document.createElement("br"));
+
+        let capital = provinces[questionIndex].capital;
+        let otherCapitals = provinces
+          .filter(province => province.capital !== capital)
+          .map(province => province.capital)
+          .slice(0, 3);
+        let options = [capital, ...otherCapitals];
+
+        let inputs = options.map((value, j) => {
+          let input = document.createElement("input");
+          input.setAttribute("type", "checkbox");
+          input.setAttribute("id", "question" + questionIndex + "_" + j);
+          input.setAttribute("name", "question" + questionIndex);
+          input.setAttribute("value", value);
+          container.appendChild(input);
+          let text = document.createTextNode(value);
+          container.appendChild(text);
+          container.appendChild(document.createElement("br"));
+          return input;
+        });
+
+        quizContainer.appendChild(container);
+
+        next

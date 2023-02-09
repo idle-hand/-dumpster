@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Quiz</title>
+    <script>
+      let score = 0;
+      function checkAnswer(question, answer) {
+        if (question === answer) {
+          score++;
+          alert("Correct!");
+        } else {
+          alert("Wrong.");
+        }
+        document.getElementById("score").innerHTML = score;
+      }
+      function resetScore() {
+        score = 0;
+        document.getElementById("score").innerHTML = score;
+        alert("Score has been reset.");
+      }
+    </script>
+  </head>
+  <body>
+    <h1>HTML Quiz</h1>
+    <p>What does HTML stand for?</p>
+    <button onclick="checkAnswer('Hypertext Markup Language', 'Hypertext Markup Language')">Hypertext Markup Language</button>
+    <button onclick="checkAnswer('Hypertext Markup Language', 'High-level Machine Programming Language')">High-level Machine Programming Language</button>
+    <p>What is the main purpose of HTML?</p>
+    <button onclick="checkAnswer('To structure and display content on the web', 'To structure and display content on the web')">To structure and display content on the web</button>
+    <button onclick="checkAnswer('To structure and display content on the web', 'To create desktop applications')">To create desktop applications</button>
+    <p>Your score: <span id="score">0</span></p>
+    <button onclick="resetScore()">Reset</button>
+  </body>
+</html>
