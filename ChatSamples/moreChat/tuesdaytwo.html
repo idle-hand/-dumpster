@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+  <style>
+    .container {
+      width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .answers {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .answer {
+      width: 40%;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .score {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="question">What is the capital of France?</div>
+    <div class="answers">
+      <div class="answer" onclick="updateScore(1)">Paris</div>
+      <div class="answer" onclick="updateScore(0)">London</div>
+      <div class="answer" onclick="updateScore(0)">Berlin</div>
+    </div>
+    <div class="score">Score: <span id="score">0</span></div>
+    <div>
+      <button class="button" onclick="exitQuiz()">Exit</button>
+      <button class="button" onclick="resetScore()">Reset</button>
+    </div>
+  </div>
+  <script>
+    let score = 0;
+    function updateScore(value) {
+      score += value;
+      document.querySelector("#score").innerHTML = score;
+    }
+    function exitQuiz() {
+      // Add code to exit the quiz here
+    }
+    function resetScore() {
+      score = 0;
+      document.querySelector("#score").innerHTML = score;
+    }
+  </script>
+</body>
+</html>

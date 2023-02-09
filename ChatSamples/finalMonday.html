@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #quizContainer {
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+      }
+  
+      #question {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+  
+      .choice {
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        border: 1px solid gray;
+      }
+  
+      .selected {
+        background-color: lightgray;
+      }
+  
+      #score {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="quizContainer">
+      <div id="question">What is the capital of France?</div>
+      <div id="answerChoices">
+        <div class="choice" id="A">Paris</div>
+        <div class="choice" id="B">Berlin</div>
+        <div class="choice" id="C">London</div>
+        <div class="choice" id="D">Rome</div>
+      </div>
+      <div id="score">Score: <span id="scoreValue">0</span></div>
+    </div>
+  
+    <script>
+      const choices = document.querySelectorAll('.choice');
+      const scoreValue = document.querySelector('#scoreValue');
+      let currentScore = 0;
+  
+      choices.forEach(choice => {
+        choice.addEventListener('click', e => {
+          choices.forEach(choice => {
+            choice.classList.remove('selected');
+          });
+          e.target.classList.add('selected');
+  
+          if (e.target.id === 'A') {
+            currentScore += 1;
+          }
+          scoreValue.textContent = currentScore;
+        });
+      });
+    </script>
+  </body>
+</html>

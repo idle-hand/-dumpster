@@ -1,0 +1,27 @@
+#quizContainer {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#question {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.choice {
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  border: 1px solid gray;
+}
+
+.selected {
+  background-color: lightgray;
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 18px;
+}

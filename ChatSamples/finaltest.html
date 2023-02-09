@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #quizContainer {
+        width: 80%;
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #F1F1F1;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      #question {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #008080;
+      }
+  
+      .choice {
+        cursor: pointer;
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        border: 1px solid gray;
+        background-color: #E8E8E8;
+        border-radius: 5px;
+        transition: all 0.2s;
+      }
+  
+      .choice:hover {
+        background-color: #C0C0C0;
+      }
+  
+      .selected {
+        background-color: #008080;
+        color: white;
+      }
+  
+      #score {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #008080;
+      }
+
+      @media (max-width: 767px) {
+        #quizContainer {
+          width: 100%;
+        }
+      }
+    </style>
+
+   
+  </head>
+  <body>
+    <div id="quizContainer">
+      <div id="question"></div>
+      <div id="answerChoices">
+      </div>
+      <div id="score">Score: <span id="scoreValue">0</span></div>
+    </div>
+  
+    <script>
+      const question = document.querySelector('#question');
+      const answerChoices = document.querySelector('#answerChoices');
+      const scoreValue = document.querySelector('#scoreValue');
+      let currentScore = 0;
+      let currentQuestionIndex = 0;
+  
+      const questions = [
+        
+        {
+          question: "What is the capital of Ontario?",
+          answers: {
+            A: "Toronto",
+            B: "Ottawa",
+            C: "Montreal",
+            D: "Vancouver"
+          },
+          correctAnswer: "A"
+        },
+        {
+          question: "What is the capital of Quebec?",
+          answers: {
+            A: "Montreal",
+            B: "Toronto",
+            C: "Ottawa",
+            D: "Vancouver"
+          },
+          correctAnswer: "A"
+        },
+        {
+          question: "What is the capital of Alberta?",
+          answers: {
+            A: "Edmonton",
+            B: "Calgary",
+            C: "Vancouver",
+            D: "Ottawa"
+          },
+          correctAnswer: "A"
+        },
+        {
+          question: "What is the capital of British Columbia?",
+          answers: {
+            A: "Vancouver",
+            B: "Victoria",
+            C: "Ottawa",
+            D: "Edmonton"
+          },
+          correctAnswer: "B"
+        },
+        {
+          question: "What is the capital of Yukon?",
+          answers: {
+            A: "Whitehorse",
+            B: "Yellowknife",
+            C: "Victoria",
+            D: "Vancouver"
+          },
+          correctAnswer: "A"
+        },
+        {
+          question: "What is the capital of Northwest Territories?",
+          answers: {
+            A: "Whitehorse",
+            B: "Yellowknife",
+            C: "Victoria",
+            D: "Vancouver"
+          },
+          correctAnswer: "B"
+        },
+        {
+          question: "What is the capital of Nunavut?",
+          answers: {
+            A: "Iqaluit",
+            B: "Yellowknife",
+            C: "Victoria",
+            D: "Vancouver"
+          },
+          correctAnswer: "A"
+        }
+      ];
+      
+      
+  
+      function displayQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];
+        question.textContent = currentQuestion.question;
+  
+        answerChoices.innerHTML = '';
+        for (const key in currentQuestion.answers) {
+          answerChoices.innerHTML += `
+          <br>  <div class="choice" id="${key}">${currentQuestion.answers[key]}</div>
+          `;
+        }
+  
+        const choices = document.querySelectorAll('.choice');
+        choices.forEach(choice => {
+          choice.addEventListener('click', e => {
+            choices.forEach(choice => {
+              choice.classList.remove('selected');
+            });
+            e.target.classList.add('selected');
+  
+            if (e.target.id === currentQuestion.correctAnswer) {
+              currentScore += 1;
+            }
+            scoreValue.textContent = currentScore;
+            currentQuestionIndex += 1;
+  
+            if (currentQuestionIndex < questions.length) {
+                          displayQuestion();
+            }
+          });
+        });
+      }
+  
+      displayQuestion();
+    </script>
+  </body>
+</html>
+
