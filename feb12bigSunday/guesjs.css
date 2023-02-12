@@ -1,0 +1,70 @@
+<style>
+  #quizContainer {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #8E44AD; /* Changed to purple */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #question {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: white; /* Changed to white */
+  }
+
+  .choice {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 4px solid gray;
+    background-color: #E8E8E8;
+    border-radius: 5px;
+    transition: all 0.2s;
+  }
+
+  .choice:hover {
+    background-color: #C0C0C0;
+  }
+
+  .selected {
+    background-color: #27AE60; /* Changed to green */
+    color: white;
+  }
+
+  #score {
+    margin-top: 20px;
+    font-size: 26px;
+    color: white; /* Changed to white */
+  }
+
+  @media (max-width: 767px) {
+    #quizContainer {
+      width: 90%; /* Changed to 90% to allow for some margin on smaller screens */
+    }
+
+    #question {
+      font-size: 20px; /* Reduced font size for smaller screens */
+    }
+
+    .choice {
+      padding: 8px 16px; /* Reduced padding for smaller screens */
+    }
+
+    .choice:hover {
+      background-color: #A9A9A9; /* Changed hover color for smaller screens */
+    }
+
+    .selected {
+      background-color: #16A085; /* Changed selected color for smaller screens */
+    }
+
+    #score {
+      font-size: 20px; /* Reduced font size for smaller screens */
+    }
+  }
+</style>
