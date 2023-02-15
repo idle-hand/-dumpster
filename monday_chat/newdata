@@ -1,0 +1,34 @@
+const questions = [  {    text: "Which of the following is NOT a feature of Canada’s system of government?",    options: ["A federal state.", "Parliamentary democracy.", "Constitutional Monarchy.", "Dictatorship."],
+    answer: 3
+  },
+  {
+    text: "Which of the following sentences best describes the War of 1812?",
+    options: ["Napoleon's fleet was defeated by the Royal Navy in the war.", "The USA became independent from the British Empire after the war.", "The USA invaded Canada and was defeated, which ensured that Canada would remain independent of the United States.", "Canada joined the United States after the war."],
+    answer: 2
+  },
+  {
+    text: "Which of the following statements about residential schools is NOT true?",
+    options: ["The federal government placed many Aboriginal children in residential schools to educate and assimilate them into mainstream Canadian culture.", "The schools were poorly funded and inflicted hardship on the students.", "The schools were welcomed by the Aboriginal people.", "Aboriginal language and cultural practices were mostly prohibited."],
+    answer: 2
+  },
+  {
+    text: "Which party becomes the Official Opposition?",
+    options: ["The party with the second most MPs.", "The party receiving the least votes.", "Any independent candidate.", "The party the Prime Minister selects."],
+    answer: 0
+  },
+  {
+    text: "Which party is the Official Opposition at the federal level?",
+    options: ["The New Democratic Party.", "The Liberal Party.", "The Independent Party.", "The Conservative Party."],
+    answer: 3
+  },
+  {
+    text: "Which port is the largest and busiest in Canada?",
+    options: ["The Port of Halifax", "The Port of Montreal", "The Port of Vancouver", "The Port of Victoria"],
+    answer: 2
+  },
+  {
+    text: "Which province has its own time zone?",
+    options: ["British Columbia", "Newfoundland and Labrador", "Nunavut", "Nova Scotia"],
+    answer: 1
+  }
+];

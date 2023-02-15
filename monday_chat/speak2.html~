@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpeakEasy Quiz</title>
+    
+<style>
+
+body {
+  font-size: 2em;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+#quiz {
+  width: 80%;
+  margin: 4em auto;
+  background-color: white;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+  padding: 2em;
+}
+
+#question {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#options {
+  list-style: none;
+  padding: 0;
+}
+
+#options li {
+  margin: 1em 0;
+}
+
+input[type="radio"] {
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+button {
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+@media (min-width: 700px) {
+  body {
+    font-size: 1.5em;
+  }
+}
+
+</style>
+    <script>
+      let score = 0;
+      let currentQuestion = 0;
+      const questions = [  {    
+      text: "What is the capital of Alberta?",    options: ["Calgary",          "Edmonton", "Ottawa"],
+    answer: 1
+  },
+  {
+    text: "What is the capital of British Columbia?",
+    options: ["Victoria", "Vancouver", "Kelowna"],
+    answer: 0
+  },
+  {
+    text: "What is the capital of Manitoba?",
+    options: ["Winnipeg", "Brandon", "Steinbach"],
+    answer: 0
+  },
+  {
+    text: "What is the capital of New Brunswick?",
+    options: ["Fredericton", "Saint John", "Moncton"],
+    answer: 0
+  },
+  {
+    text: "What is the capital of Newfoundland and Labrador?",
+    options: ["St. John's", "Mount Pearl", "Corner Brook"],
+    answer: 0
+  },
+  {
+    text: "What is the capital of Nova Scotia?",
+    options: ["Halifax", "Dartmouth", "Sydney"],
+    answer: 0
+  },
+  {
+    text: "What is the capital of Ontario?",
+    options: ["Toronto", "Ottawa", "Hamilton"],
+    answer: 1
+  },
+  {
+    text: "What is the capital of Prince Edward Island?",
+    options: ["Charlottetown", "Summerside", "Stratford"],
+    answer: 0
+  },
+  {
+    text: "What is the capital of Quebec?",
+    options: ["Montreal", "Quebec City", "Gatineau"],
+    answer: 1
+  },
+  {
+    text: "What is the capital of Saskatchewan?",
+    options: ["Regina", "Saskatoon", "Moose Jaw"],
+    answer: 0
+  }
+];
+
+
+      function checkAnswer(answer) {
+        if (questions[currentQuestion].answer === answer) {
+          score++;
+          alert("Correct!");
+        } else {
+          alert("Wrong.");
+        }
+        document.getElementById("score").innerHTML = score;
+      }
+      function displayQuestion() {
+        document.getElementById("question").innerHTML = questions[currentQuestion].text;
+        const options = questions[currentQuestion].options;
+        for (let i = 0; i < options.length; i++) {
+          const button = document.getElementById(`option${i}`);
+          button.innerHTML = options[i];
+          button.style.display = "inline-block";
+        }
+      }
+      function nextQuestion() {
+        currentQuestion++;
+        if (currentQuestion === questions.length) {
+          alert(`Quiz completed. Your score is ${score}`);
+          currentQuestion = 0;
+        }
+        displayQuestion();
+      }
+      function resetScore() {
+        score = 0;
+        currentQuestion = 0;
+        document.getElementById("score").innerHTML = score;
+        alert("Score has been reset.");
+        displayQuestion();
+      }
+    </script>
+  </head>
+  <body onload="displayQuestion()">
+    <h1>HTML Quiz</h1>
+    <p id="question"></p>
+    <button id="option0" onclick="checkAnswer(0)" style="display:none;"></button>
+    <button id="option1" onclick="checkAnswer(1)" style="display:none;"></button>
+    <button id="option2" onclick="checkAnswer(2)" style="display:none;"></button>    
+    <p>Your score: <span id="score">0</span></p>
+    <button onclick="resetScore()">Reset</button>
+    <button onclick="nextQuestion()">Next</button>
+  </body>
+</html>
